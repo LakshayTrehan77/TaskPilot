@@ -1,0 +1,17 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: taskpilot
+spec:
+  ingressClassName: nginx
+  rules:
+    - host: taskpilot.localhost
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: taskpilot-api
+                port:
+                  number: 80
